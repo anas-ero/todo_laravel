@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -12,7 +13,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::latest()->get();
+        $todos = Auth::user()->todos;
         return view('todo', compact('todos'));
     }
 
@@ -30,9 +31,8 @@ class TodoController extends Controller
             'title' => 'required|string|max:255',
         ]);
 
-        Todo::create([
+        auth()->user()->todos()->create([
             'title' => $request->title,
-
         ]);
 
         return redirect()->route('todos.index');
@@ -41,10 +41,7 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Todo $todo)
-    {
-       
-    }
+    public function show(Todo $todo) {}
 
     /**
      * Show the form for editing the specified resource.
