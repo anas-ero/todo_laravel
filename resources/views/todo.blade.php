@@ -3,13 +3,13 @@
 
 @section('content')
 <div class="flex items-center justify-center bg-white shadow-lg rounded-lg p-6">
-    <div class=" px-3 py-2 h-100 w-full">
+    <div class="px-3 py-2 h-100 w-full">
         <div class="mb-4">
-            <h1 class="text-md">Add a task</h1>
+            <h1 class="text-md mb-2">Add a task</h1>
             <form method="POST" action="/todos">
                 @csrf
-                <input type="text" name="title" class="border px-2 py-1 rounded mr-2" placeholder="Task title">
-                <button class="bg-blue-500 text-white px-3 py-1.5 rounded cursor-pointer">Save</button>
+                <input type="text" name="title" class="border border-slate-300 px-2 py-1 rounded w-full" placeholder="Task title">
+                <button class="bg-blue-500 text-white px-3 py-1.5 mt-3 rounded cursor-pointer">Save</button>
             </form>
         </div>
 
@@ -22,7 +22,7 @@
                     <li class="text-gray-500">No tasks available.</li>
                     @endif
                     @foreach ($todos as $todo)
-                    <li class="mb-2 flex items-center bg-neutral-200 p-2 rounded">
+                    <li class="mb-2 flex justify-between  items-center bg-neutral-200 p-2 rounded">
                         <form method="POST" action="/todos/{{ $todo->id }}">
                             @csrf
                             @method('PUT')

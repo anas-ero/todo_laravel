@@ -9,7 +9,7 @@
 
             <form method="get" action="/logout">
                 @csrf
-                <button class="text-red-500 hover:underline">
+                <button class="text-red-500 hover:underline cursor-pointer">
                     Logout
                 </button>
             </form>

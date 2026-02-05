@@ -26,6 +26,10 @@
 
 
             @yield('content')
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                @yield('login')
+                @yield('register')
+            </div>
         </div>
     </div>
 
